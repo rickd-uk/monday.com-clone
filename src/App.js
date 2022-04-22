@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Nav } from './components'
 import { Dashboard, Ticket } from './pages'
 
 const App = () => {
 	return (
 		<div className='App'>
 			<BrowserRouter>
+				<Nav />
 				<Routes>
 					<Route path='/' element={<Dashboard />}></Route>
 					<Route path='/ticket' element={<Ticket />}></Route>
