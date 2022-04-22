@@ -4,7 +4,7 @@ import { Dashboard, Ticket } from './pages'
 
 const App = () => {
 	return (
-		<div className='App'>
+		<div className='app'>
 			<BrowserRouter>
 				<Nav />
 				<Routes>
