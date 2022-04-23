@@ -1,18 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Nav } from './components'
 import { Dashboard, Ticket } from './pages'
 
 const App = () => {
 	return (
 		<div className='app'>
-			<BrowserRouter>
+			<Router>
 				<Nav />
 				<Routes>
-					<Route path='/' element={<Dashboard />}></Route>
-					<Route path='/ticket' element={<Ticket />}></Route>
-					<Route path='/ticket/:id' element={<Ticket editMode={true} />}></Route>
+					<Route path='/' element={<Dashboard />} />
+					<Route path='/ticket' element={<Ticket />} />
+					<Route path='/ticket/:id' element={<Ticket editMode={true} />} />
 				</Routes>
-			</BrowserRouter>
+			</Router>
 		</div>
 	)
 }
