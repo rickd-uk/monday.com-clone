@@ -16,7 +16,7 @@ const Dashboard = () => {
 			timestamp: '2022-02-18T09:25:00+0000',
 		},
 		{
-			category: 'Q1 2022',
+			category: 'Q2 2022',
 			color: 'red',
 			title: 'AI Conference',
 			owner: 'Dave Larson',
@@ -44,6 +44,8 @@ const Dashboard = () => {
 		},
 	]
 
+	const colors = ['rgb(255,179,186)', 'rgb(255,223,186)', 'rgb(255,255,186)', 'rgb(186,255,201)', 'rgb(186,255,255)']
+
 	const uniqueCategories = [...new Set(tickets?.map(({ category }) => category))]
 
 	console.log(uniqueCategories)
@@ -59,7 +61,7 @@ const Dashboard = () => {
 							{tickets
 								.filter((ticket) => ticket.category === uniqueCategory)
 								.map((filteredTicket, _index) => (
-									<TicketCard key={_index} id={_index} color={filteredTicket.color} ticket={filteredTicket} />
+									<TicketCard key={_index} id={_index} color={colors[categoryIndex] || colors[0]} ticket={filteredTicket} />
 								))}
 						</div>
 					))}
