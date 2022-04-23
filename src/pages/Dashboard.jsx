@@ -22,7 +22,7 @@ const Dashboard = () => {
 			owner: 'Dave Larson',
 			avatar:
 				'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fstorage%2Fimg%2Fthumb%2Fda5id1-Manga-Face.png&f=1&nofb=1',
-			status: 'done',
+			status: 'working on it',
 			priority: 5,
 			progress: 40,
 			description: 'Make a slideshow about Crypto',
@@ -36,7 +36,7 @@ const Dashboard = () => {
 			owner: 'Dave Larson',
 			avatar:
 				'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fstorage%2Fimg%2Fthumb%2Fda5id1-Manga-Face.png&f=1&nofb=1',
-			status: 'done',
+			status: 'stuck',
 			priority: 5,
 			progress: 40,
 			description: 'Make a slideshow about Crypto',
