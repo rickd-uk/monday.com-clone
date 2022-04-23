@@ -16,7 +16,7 @@ const Dashboard = () => {
 			timestamp: '2022-02-18T09:25:00+0000',
 		},
 		{
-			category: 'Q2 2022',
+			category: 'Q1 2022',
 			color: 'red',
 			title: 'AI Conference',
 			owner: 'Dave Larson',
