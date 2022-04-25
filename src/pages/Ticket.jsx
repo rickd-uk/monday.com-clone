@@ -63,7 +63,7 @@ const Ticket = () => {
 							type='text'
 							onChange={handleChange}
 							required={true}
-							value={FormData.title}
+							value={formData.title}
 						/>
 						<label htmlFor='description'>Description</label>
 						<input
@@ -72,7 +72,7 @@ const Ticket = () => {
 							type='text'
 							onChange={handleChange}
 							required={true}
-							value={FormData.description}
+							value={formData.description}
 						/>
 						<label htmlFor='new-category'>New Category</label>
 						<input
@@ -81,15 +81,15 @@ const Ticket = () => {
 							type='text'
 							onChange={handleChange}
 							required={false}
-							value={FormData.category}
+							value={formData.category}
 						/>
 
-						{!newCategory && (
+						{!newCategory && categories && (
 							<>
 								<label>Category</label>
 								<select
 									name='category'
-									value={FormData.category}
+									value={formData.category || categories[0]}
 									onChange={handleChange}>
 									{categories?.map((category, _index) => (
 										<option value={category} key={_index}>
@@ -97,60 +97,61 @@ const Ticket = () => {
 										</option>
 									))}
 								</select>
-								<label>Priority</label>
-								<div className='multiple-input-container'>
-									<input
-										type='radio'
-										id='priority-1'
-										name='priority'
-										onChange={handleChange}
-										value={1}
-										checked={formData.priority == 1}
-									/>
-									<label htmlFor='priority-1'>1</label>
-
-									<input
-										type='radio'
-										id='priority-1'
-										name='priority'
-										onChange={handleChange}
-										value={2}
-										checked={formData.priority == 2}
-									/>
-									<label htmlFor='priority-3'>2</label>
-
-									<input
-										type='radio'
-										id='priority-3'
-										name='priority'
-										onChange={handleChange}
-										value={3}
-										checked={formData.priority == 3}
-									/>
-									<label htmlFor='priority-3'>3</label>
-
-									<input
-										type='radio'
-										id='priority-4'
-										name='priority'
-										onChange={handleChange}
-										value={4}
-										checked={formData.priority == 4}
-									/>
-									<label htmlFor='priority-4'>4</label>
-
-									<input
-										type='radio'
-										id='priority-5'
-										name='priority'
-										onChange={handleChange}
-										value={5}
-										checked={formData.priority == 5}
-									/>
-									<label htmlFor='priority-5'>5</label>
-								</div>
 							</>
 						)}
+
+						<label>Priority</label>
+						<div className='multiple-input-container'>
+							<input
+								type='radio'
+								id='priority-1'
+								name='priority'
+								onChange={handleChange}
+								value={1}
+								checked={formData.priority == 1}
+							/>
+							<label htmlFor='priority-1'>1</label>
+
+							<input
+								type='radio'
+								id='priority-1'
+								name='priority'
+								onChange={handleChange}
+								value={2}
+								checked={formData.priority == 2}
+							/>
+							<label htmlFor='priority-3'>2</label>
+
+							<input
+								type='radio'
+								id='priority-3'
+								name='priority'
+								onChange={handleChange}
+								value={3}
+								checked={formData.priority == 3}
+							/>
+							<label htmlFor='priority-3'>3</label>
+
+							<input
+								type='radio'
+								id='priority-4'
+								name='priority'
+								onChange={handleChange}
+								value={4}
+								checked={formData.priority == 4}
+							/>
+							<label htmlFor='priority-4'>4</label>
+
+							<input
+								type='radio'
+								id='priority-5'
+								name='priority'
+								onChange={handleChange}
+								value={5}
+								checked={formData.priority == 5}
+							/>
+							<label htmlFor='priority-5'>5</label>
+						</div>
 
 						{editMode && (
 							<>
@@ -201,7 +202,7 @@ const Ticket = () => {
 							type='text'
 							onChange={handleChange}
 							required={true}
-							value={FormData.owner}
+							value={formData.owner}
 						/>
 
 						<label htmlFor='avatar'>Avatar</label>
@@ -212,7 +213,7 @@ const Ticket = () => {
 							type='url'
 							onChange={handleChange}
 							required={true}
-							value={FormData.avatar}
+							value={formData.avatar}
 						/>
 
 						<div className='img-preview'>

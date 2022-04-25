@@ -5,10 +5,12 @@ import CategoriesContext from '../context'
 
 const Dashboard = () => {
 	const [tickets, setTickets] = useState(null)
+	const [isLoading, setIsLoading] = useState(false)
 	const { categories, setCategories } = useContext(CategoriesContext)
 
 	useEffect(() => {
 		const fetchData = async () => {
+			setIsLoading(true)
 			const response = await axios.get('http://localhost:8000/tickets')
 
 			const dataObj = response.data.data
@@ -24,6 +26,7 @@ const Dashboard = () => {
 				formattedArr.push(formattedData)
 			})
 			setTickets(formattedArr)
+			setIsLoading(false)
 		}
 
 		fetchData()
@@ -47,8 +50,6 @@ const Dashboard = () => {
 		...new Set(tickets?.map(({ category }) => category)),
 	]
 
-	console.log(uniqueCategories)
-
 	return (
 		<div className='dashboard'>
 			<div className='ticket-container'>
@@ -69,6 +70,7 @@ const Dashboard = () => {
 								))}
 						</div>
 					))}
+				{isLoading && <div>Loading...</div>}
 			</div>
 		</div>
 	)
