@@ -14,8 +14,14 @@ const Dashboard = () => {
 			const arrOfKeys = Object.keys(dataObj)
 			const arrOfData = arrOfKeys.map((key) => dataObj[key])
 
-			console.log(arrOfKeys)
-			console.log(arrOfData)
+			const formattedArr = []
+
+			arrOfKeys.forEach((key, index) => {
+				const formattedData = { ...arrOfData[index] }
+				formattedData['documentId'] = key
+				formattedArr.push(formattedData)
+			})
+			setTickets(formattedArr)
 		}
 
 		fetchData()
