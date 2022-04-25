@@ -6,6 +6,7 @@ import CategoriesContext from '../context'
 
 const Ticket = () => {
 	const navigate = useNavigate()
+	const [newCategory, setNewCategory] = useState(false)
 
 	const [formData, setFormData] = useState({
 		status: 'notstarted',
@@ -30,6 +31,18 @@ const Ticket = () => {
 	const handleChange = (e) => {
 		const value = e.target.value
 		const name = e.target.name
+		const type = e.target.type
+
+		if (
+			!newCategory &&
+			name === 'category' &&
+			type === 'text' &&
+			value.length > 0
+		) {
+			setNewCategory(true)
+		} else if (name === 'category' && type === 'text' && value.length === 0) {
+			setNewCategory(false)
+		}
 
 		setFormData((prevState) => ({
 			...prevState,
@@ -70,69 +83,74 @@ const Ticket = () => {
 							required={false}
 							value={FormData.category}
 						/>
-						<label>Category</label>
-						<select
-							name='category'
-							value={FormData.category}
-							onChange={handleChange}>
-							{categories?.map((category, _index) => (
-								<option value={category} key={_index}>
-									{category}
-								</option>
-							))}
-						</select>
-						<label>Priority</label>
-						<div className='multiple-input-container'>
-							<input
-								type='radio'
-								id='priority-1'
-								name='priority'
-								onChange={handleChange}
-								value={1}
-								checked={formData.priority == 1}
-							/>
-							<label htmlFor='priority-1'>1</label>
 
-							<input
-								type='radio'
-								id='priority-1'
-								name='priority'
-								onChange={handleChange}
-								value={2}
-								checked={formData.priority == 2}
-							/>
-							<label htmlFor='priority-3'>2</label>
+						{!newCategory && (
+							<>
+								<label>Category</label>
+								<select
+									name='category'
+									value={FormData.category}
+									onChange={handleChange}>
+									{categories?.map((category, _index) => (
+										<option value={category} key={_index}>
+											{category}
+										</option>
+									))}
+								</select>
+								<label>Priority</label>
+								<div className='multiple-input-container'>
+									<input
+										type='radio'
+										id='priority-1'
+										name='priority'
+										onChange={handleChange}
+										value={1}
+										checked={formData.priority == 1}
+									/>
+									<label htmlFor='priority-1'>1</label>
 
-							<input
-								type='radio'
-								id='priority-3'
-								name='priority'
-								onChange={handleChange}
-								value={3}
-								checked={formData.priority == 3}
-							/>
-							<label htmlFor='priority-3'>3</label>
+									<input
+										type='radio'
+										id='priority-1'
+										name='priority'
+										onChange={handleChange}
+										value={2}
+										checked={formData.priority == 2}
+									/>
+									<label htmlFor='priority-3'>2</label>
 
-							<input
-								type='radio'
-								id='priority-4'
-								name='priority'
-								onChange={handleChange}
-								value={4}
-								checked={formData.priority == 4}
-							/>
-							<label htmlFor='priority-4'>4</label>
+									<input
+										type='radio'
+										id='priority-3'
+										name='priority'
+										onChange={handleChange}
+										value={3}
+										checked={formData.priority == 3}
+									/>
+									<label htmlFor='priority-3'>3</label>
 
-							<input
-								type='radio'
-								id='priority-5'
-								name='priority'
-								onChange={handleChange}
-								value={5}
-								checked={formData.priority == 5}
-							/>
-							<label htmlFor='priority-5'>5</label>
-						</div>
+									<input
+										type='radio'
+										id='priority-4'
+										name='priority'
+										onChange={handleChange}
+										value={4}
+										checked={formData.priority == 4}
+									/>
+									<label htmlFor='priority-4'>4</label>
+
+									<input
+										type='radio'
+										id='priority-5'
+										name='priority'
+										onChange={handleChange}
+										value={5}
+										checked={formData.priority == 5}
+									/>
+									<label htmlFor='priority-5'>5</label>
+								</div>
+							</>
+						)}
 
 						{editMode && (
 							<>
