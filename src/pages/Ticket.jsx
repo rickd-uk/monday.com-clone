@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Ticket = () => {
+	const navigate = useNavigate()
+
 	const [formData, setFormData] = useState({
 		status: 'notstarted',
 		progress: 0,
@@ -8,9 +12,18 @@ const Ticket = () => {
 	})
 	const editMode = false
 
-	const handleSubmit = () => {
-		console.log('Submitted')
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+
+		if (!editMode) {
+			const response = await axios.post('http://localhost:8000/tickets', {
+				formData,
+			})
+			const success = response.status === 201
+			if (success) navigate('/')
+		}
 	}
+
 	const handleChange = (e) => {
 		const value = e.target.value
 		const name = e.target.name
@@ -77,7 +90,7 @@ const Ticket = () => {
 								name='priority'
 								onChange={handleChange}
 								value={1}
-								checked
+								checked={formData.priority == 1}
 							/>
 							<label htmlFor='priority-1'>1</label>
 
@@ -86,8 +99,8 @@ const Ticket = () => {
 								id='priority-1'
 								name='priority'
 								onChange={handleChange}
-								value={1}
-								checked
+								value={2}
+								checked={formData.priority == 2}
 							/>
 							<label htmlFor='priority-3'>2</label>
 
@@ -97,7 +110,7 @@ const Ticket = () => {
 								name='priority'
 								onChange={handleChange}
 								value={3}
-								checked
+								checked={formData.priority == 3}
 							/>
 							<label htmlFor='priority-3'>3</label>
 
@@ -107,7 +120,7 @@ const Ticket = () => {
 								name='priority'
 								onChange={handleChange}
 								value={4}
-								checked
+								checked={formData.priority == 4}
 							/>
 							<label htmlFor='priority-4'>4</label>
 
@@ -117,7 +130,7 @@ const Ticket = () => {
 								name='priority'
 								onChange={handleChange}
 								value={5}
-								checked
+								checked={formData.priority == 5}
 							/>
 							<label htmlFor='priority-5'>5</label>
 						</div>
@@ -159,7 +172,7 @@ const Ticket = () => {
 							</>
 						)}
 
-						<input type='submit' />
+						<input type='submit' id='submit-btn' />
 					</section>
 
 					<section>

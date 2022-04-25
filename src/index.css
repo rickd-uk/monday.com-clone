@@ -177,6 +177,7 @@ nav .icon {
   padding: 30px;
   width: 100%;
 
+
 }
 
 .ticket .ticket-container {
@@ -187,13 +188,15 @@ nav .icon {
 
 .ticket form {
   display: flex;
+
 }
 
 .ticket form section {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  width: 500px;
+  width: 300px;
+
 }
 
 .ticket form label {
@@ -212,4 +215,17 @@ nav .icon {
 
 .ticket form .multiple-input-container {
   margin: 20px 0 20px 0;
+}
+
+
+.ticket .img-preview img {
+  width: 80px;
+  height: 80px;
+}
+
+#submit-btn {
+  background-color: lightseagreen;
+  color: whitesmoke;
+  cursor: pointer;
+  font-weight: 600;
 }
