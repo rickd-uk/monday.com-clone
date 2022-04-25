@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import CategoriesContext from '../context'
 
-const Ticket = () => {
+const Ticket = ({ editMode }) => {
 	const navigate = useNavigate()
 	const [newCategory, setNewCategory] = useState(false)
 
@@ -13,7 +13,6 @@ const Ticket = () => {
 		progress: 0,
 		timeStamp: new Date().toISOString(),
 	})
-	const editMode = false
 	const { categories, useCategories } = useContext(CategoriesContext)
 
 	const handleSubmit = async (e) => {
