@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom'
-import { AvatarDisplay, StatusDisplay, PriorityDisplay, ProgressDisplay, DeleteBlock } from './'
+import {
+	AvatarDisplay,
+	StatusDisplay,
+	PriorityDisplay,
+	ProgressDisplay,
+	DeleteBlock,
+} from './'
 
 const TicketCard = ({ color, ticket, status }) => {
 	return (
@@ -12,7 +18,7 @@ const TicketCard = ({ color, ticket, status }) => {
 				<PriorityDisplay priority={ticket.priority} />
 				<ProgressDisplay progress={ticket.progress} />
 			</Link>
-			<DeleteBlock />
+			<DeleteBlock documentId={ticket.documentId} />
 		</div>
 	)
 }
