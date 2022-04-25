@@ -67,7 +67,7 @@ const Ticket = () => {
 							name='category'
 							type='text'
 							onChange={handleChange}
-							required={true}
+							required={false}
 							value={FormData.category}
 						/>
 						<label>Category</label>
